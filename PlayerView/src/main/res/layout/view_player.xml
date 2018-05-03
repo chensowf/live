@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <SurfaceView
+        android:id="@+id/playerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <include layout="@layout/view_playtopbar"/>
+
+        <include layout="@layout/view_livetopbar" android:visibility="gone"/>
+
+        <include layout="@layout/view_center_volume_brightness"/>
+
+        <include layout="@layout/view_center_seekto"/>
+
+        <include layout="@layout/view_center_onbuffer"/>
+
+        <include layout="@layout/view_bar"/>
+
+    </FrameLayout>
+
+</RelativeLayout>

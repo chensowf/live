@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:keepScreenOn="true">
+
+    <com.jap.playerview.PlayerView
+        android:id="@+id/Player"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ImageView
+        android:id="@+id/btn_juBao"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:layout_centerInParent="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_jubao"
+        android:background="@drawable/circle_bg1"/>
+
+    <ImageView
+        android:id="@+id/btn_close"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/btn_juBao"
+        android:src="@drawable/ic_player_pannel_close"
+        android:background="@drawable/circle_bg1"/>
+
+    <cn.mz.live.widget.RunTextView
+        android:id="@+id/runText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:textColor="@color/colorAccent"
+        android:background="@android:color/transparent"
+        android:text="温馨提示: 请勿相信偷窥神器、推筒子、老虎机 、麻将等赌博信息,被骗的自行承担后果！"/>
+
+
+</RelativeLayout>

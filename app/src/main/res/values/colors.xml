@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#2196F3</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="blue">#2196F3</color>
+    <color name="dark_blue">#2196F3</color>
+    <color name="accent_blue">#448AFF</color>
+
+    <color name="red">#EE2C2C</color>
+  <color name="white">#FFFFFFFF</color>
+
+    <color name="tab_bottom_nor">#bfbfbf</color>
+    <color name="tab_bottom_press">@color/blue</color>
+
+    <color name="color_text_bg">#7A000000</color>
+
+    <!--Toast 背景颜色-->
+    <color name="color_toast_bg">#606060</color>
+
+</resources>

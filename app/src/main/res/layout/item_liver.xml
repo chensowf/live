@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp">
+
+    <cn.bingoogolapple.imageview.BGAImageView
+        android:id="@+id/item_img_liver"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:bga_iv_cornerRadius="10dp"
+        app:bga_iv_isCircle="true"
+        android:scaleType="centerCrop"/>
+
+
+    <TextView
+        android:id="@+id/item_title_liver"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:maxLines="1"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/item_img_liver"
+        android:gravity="center"
+        android:text="有压力直播"/>
+
+</RelativeLayout>

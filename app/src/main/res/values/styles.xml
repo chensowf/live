@@ -1,0 +1,50 @@
+<resources>
+
+    <style name="PlayerTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+  <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+    <item name="elevation">0dp</item>
+  </style>
+
+    <style name="StartTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:background">@drawable/start</item>
+    </style>
+
+    <style name="MainTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="DialogTheme" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+  <declare-styleable name="MovingImageView">
+    <attr name="miv_speed" format="integer"/>
+    <attr name="miv_repetitions" format="integer"/>
+    <attr name="miv_max_relative_size" format="float"/>
+    <attr name="miv_min_relative_offset" format="float"/>
+    <attr name="miv_start_delay" format="integer"/>
+    <attr name="miv_load_on_create" format="boolean"/>
+  </declare-styleable>
+
+  <declare-styleable name="MovingImageViewTheme">
+    <attr name="movingImageViewStyle" format="reference"/>
+  </declare-styleable>
+
+</resources>

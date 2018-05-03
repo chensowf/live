@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/action_nav_leng_mi"
+            android:visible="true"
+            android:icon="@mipmap/icon_nav_on_live_pro"
+            android:title="@string/str_nav_on_live"
+            />
+
+
+        <item
+            android:id="@+id/action_qidian_shuo"
+            android:title="@string/app_name"
+            />
+
+
+
+        <item
+            android:id="@+id/action_wx_news"
+            android:title="@string/app_name"
+            />
+
+        <item
+            android:id="@+id/action_mt_only"
+            android:title="@string/app_name"
+            android:visible="false"
+            />
+
+
+
+    </group>
+
+</menu>

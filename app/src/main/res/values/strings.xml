@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">性感猫</string>
+    <string name="btn_back">&#60; 返回</string>
+
+    <string name="str_nav_on_live">在线视频</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="160dp"
+    android:layout_height="80dp"
+    android:background="@drawable/view_center_bg"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:id="@+id/view_center_seekto"
+    android:visibility="gone">
+
+    <TextView
+        android:id="@+id/seektosecond_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="18dp"
+        android:text="+13s"/>
+    <TextView
+        android:id="@+id/seekposition_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="18dp"
+        android:text="00:00:00/00:00:00"/>
+
+</LinearLayout>

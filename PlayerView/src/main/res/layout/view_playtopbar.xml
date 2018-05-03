@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/PlayTopBar"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:layout_gravity="top"
+    android:layout_marginStart="3dp"
+    android:layout_marginEnd="3dp">
+
+    <ImageView
+        android:id="@+id/PlayCloseR"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/ic_player_pannel_close"/>
+
+    <TextView
+        android:id="@+id/PlayTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="start|center"
+        android:layout_toStartOf="@+id/PlayCloseR"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/colorWhite"
+        android:maxLines="1"
+        android:textSize="15sp"
+        android:text="电视剧第12集"/>
+
+
+
+</RelativeLayout>

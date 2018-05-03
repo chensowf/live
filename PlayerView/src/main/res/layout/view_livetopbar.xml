@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/LiveTopBar"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp">
+
+    <ImageView
+        android:id="@+id/LiveClose"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerInParent="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/ic_player_pannel_close"/>
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_alignParentStart="true"
+        android:gravity="center"
+        android:background="@drawable/view_livetopbar_bg">
+
+        <cn.bingoogolapple.imageview.BGAImageView
+            android:id="@+id/LiveIco"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="0dp"
+            android:layout_centerInParent="true"
+            android:layout_alignParentStart="true"
+            app:bga_iv_isCircle="true"/>
+
+        <TextView
+            android:id="@+id/LiveTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/liveIco"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:gravity="start|center"
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp"
+            android:maxLines="2"
+            android:text="直播直播直播直播直播"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
