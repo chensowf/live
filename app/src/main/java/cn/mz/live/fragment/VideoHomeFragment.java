@@ -1,6 +1,8 @@
 package cn.mz.live.fragment;
 
 import android.os.Bundle;
+
+import cn.mz.live.api.VideoApi;
 import cn.mz.live.base.BaseFragment;
 import java.util.ArrayList;
 
@@ -37,8 +39,9 @@ public class VideoHomeFragment extends NewsBaseTabFragment {
         super.initView();
 
         String [] titles=new String[]{"冷密美女"};
-
-        fragments.add(LengMiFragment.newInstance());
+        LengMiFragment lengMiFragment = LengMiFragment.newInstance();
+        lengMiFragment.setVideoType(VideoApi.MeiMiVideoType);
+        fragments.add(lengMiFragment);
 
         initTabLayout(titles,fragments);
 

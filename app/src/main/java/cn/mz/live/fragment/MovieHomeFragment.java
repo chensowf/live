@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
+import cn.mz.live.api.VideoApi;
 import cn.mz.live.base.BaseFragment;
 
 /**
@@ -37,8 +38,9 @@ public class MovieHomeFragment extends NewsBaseTabFragment {
         super.initView();
 
         String [] titles=new String[]{"韩国伦理"};
-
-        fragments.add(LengMiFragment.newInstance());
+        LengMiFragment lengMiFragment = LengMiFragment.newInstance();
+        lengMiFragment.setVideoType(VideoApi.SKVideoType);
+        fragments.add(lengMiFragment);
 
         initTabLayout(titles,fragments);
     }

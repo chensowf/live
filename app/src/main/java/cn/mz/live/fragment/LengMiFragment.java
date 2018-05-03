@@ -52,6 +52,8 @@ public class LengMiFragment extends BaseFragment implements OnRefreshLoadmoreLis
 
     private int mPage = 1;
 
+    private String mVideoType;
+
     private List<VideoBean> data = new ArrayList<>();
     private CommonAdapter<VideoBean> adapter;
 
@@ -62,9 +64,14 @@ public class LengMiFragment extends BaseFragment implements OnRefreshLoadmoreLis
 
     public static LengMiFragment  newInstance(){
 
-        LengMiFragment lengMiFragment=new LengMiFragment();
+        LengMiFragment lengMiFragment = new LengMiFragment();
 
-        return  lengMiFragment;
+        return lengMiFragment;
+    }
+
+    public void setVideoType(String mVideoType)
+    {
+        this.mVideoType = mVideoType;
     }
 
     @Override
@@ -158,7 +165,7 @@ public class LengMiFragment extends BaseFragment implements OnRefreshLoadmoreLis
             @Override
             public void run() {
 
-                List<VideoBean> videoList = VideoApi.getVideoList(mPage);
+                List<VideoBean> videoList = VideoApi.getVideoList(mPage,mVideoType);
 
                 VideoEvent event=new VideoEvent(videoList);
                 event.setRefresh(isRefresh);
