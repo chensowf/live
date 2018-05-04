@@ -38,9 +38,9 @@ public class MovieHomeFragment extends NewsBaseTabFragment {
         super.initView();
 
         String [] titles=new String[]{"韩国伦理"};
-        LengMiFragment lengMiFragment = LengMiFragment.newInstance();
-        lengMiFragment.setVideoType(VideoApi.SKVideoType);
-        fragments.add(lengMiFragment);
+        SKMovieFragment skMovieFragment = SKMovieFragment.newInstance();
+        skMovieFragment.setVideoType(VideoApi.SKVideoType);
+        fragments.add(skMovieFragment);
 
         initTabLayout(titles,fragments);
     }

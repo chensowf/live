@@ -13,7 +13,6 @@ import java.util.ArrayList;
 public class VideoHomeFragment extends NewsBaseTabFragment {
 
 
-
     private ArrayList<BaseFragment> fragments=new ArrayList<>();
 
 

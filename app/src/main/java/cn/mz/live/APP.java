@@ -6,6 +6,7 @@ import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import cn.jiguang.share.android.api.JShareInterface;
+import cn.mz.live.api.VideoApi;
 import okhttp3.OkHttpClient;
 
 public class APP extends Application{
@@ -47,7 +48,9 @@ public class APP extends Application{
 
         OkGo.getInstance().init(this)                       //必须调用初始化
                 .setOkHttpClient(builder.build())               //建议设置OkHttpClient，不设置将使用默认的
-                .setRetryCount(2);                              //全局统一超时重连次数，默认为三次，不需要可以设置为0
+                .setRetryCount(2);
+        //全局统一超时重连次数，默认为三次，不需要可以设置为0
+
     }
 
 }

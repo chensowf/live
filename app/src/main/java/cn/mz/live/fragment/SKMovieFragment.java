@@ -9,6 +9,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.mcxtzhang.commonadapter.rv.CommonAdapter;
+import com.mcxtzhang.commonadapter.rv.OnItemClickListener;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import cn.jzvd.JZVideoPlayer;
 import cn.jzvd.JZVideoPlayerStandard;
@@ -20,14 +34,6 @@ import cn.mz.live.bean.VideoBean;
 import cn.mz.live.event.VideoEvent;
 import cn.mz.live.toast.Ts;
 import cn.mz.live.utils.ThreadPoolUtils;
-
-import com.mcxtzhang.commonadapter.rv.CommonAdapter;
-import com.mcxtzhang.commonadapter.rv.OnItemClickListener;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.header.ClassicsHeader;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
-
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -35,17 +41,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LengMiFragment extends BaseFragment implements OnRefreshLoadmoreListener,
+public class SKMovieFragment extends BaseFragment implements OnRefreshLoadmoreListener,
         OnItemClickListener<VideoBean> {
 
     @BindView(R.id.refreshLayout)
@@ -62,13 +61,13 @@ public class LengMiFragment extends BaseFragment implements OnRefreshLoadmoreLis
     private CommonAdapter<VideoBean> adapter;
 
 
-    public LengMiFragment() {
+    public SKMovieFragment() {
         // Required empty public constructor
     }
 
-    public static LengMiFragment newInstance() {
+    public static SKMovieFragment newInstance() {
 
-        LengMiFragment lengMiFragment = new LengMiFragment();
+        SKMovieFragment lengMiFragment = new SKMovieFragment();
 
         return lengMiFragment;
     }
@@ -134,14 +133,20 @@ public class LengMiFragment extends BaseFragment implements OnRefreshLoadmoreLis
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onCallBackDataEvent(VideoEvent event) {
+        if(event.getAction() != null)
+            Log.e("debug",event.getAction());
+        else
+            return;
         List<VideoBean> datas = event.getDatas();
         if (event.isRefresh() && (datas == null || datas.size() == 0)) {
+
             Ts.longToast(getContext(), "数据加载为空");
         } else {
             Ts.longToast(getContext(), "收到信息数据:" + datas.size());
         }
         adapter.addDatas(datas);
         adapter.notifyDataSetChanged();
+
         if (refreshLayout.isLoading()) {
             refreshLayout.finishLoadmore();
         }
@@ -151,15 +156,13 @@ public class LengMiFragment extends BaseFragment implements OnRefreshLoadmoreLis
     }
 
     private void getVideoDatas(final boolean isRefresh) {
-
         ThreadPoolUtils.getThreadPool().submit(new Runnable() {
             @Override
             public void run() {
-
                 List<VideoBean> videoList = VideoApi.getVideoList(mPage, mVideoType);
-                VideoEvent event = new VideoEvent(videoList);
+                final VideoEvent event = new VideoEvent(videoList);
                 event.setRefresh(isRefresh);
-
+                event.setAction("SDKSDKSDKSKDKSDKSDKSKDKD");
                 EventBus.getDefault().post(event);
             }
         });
@@ -186,9 +189,8 @@ public class LengMiFragment extends BaseFragment implements OnRefreshLoadmoreLis
         Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(ObservableEmitter<String> emitter) throws Exception {
-
-                String videoUrl = VideoApi.getVideoUrl(nextPage);
-
+                Log.e("videovideo", "视频url：" + nextPage);
+                String videoUrl = VideoApi.getSKVideoUrl(nextPage);
                 emitter.onNext(videoUrl);
             }
         }).subscribeOn(Schedulers.io())
@@ -196,17 +198,11 @@ public class LengMiFragment extends BaseFragment implements OnRefreshLoadmoreLis
                 .subscribe(new Consumer<String>() {
                     @Override
                     public void accept(String s) throws Exception {
-
-
                         progressDialog.dismiss();
-
-                        Log.e(TAG, "视频url：" + s);
-
+                        Log.e("videovideo", "视频url：" + s);
                         JZVideoPlayerStandard.startFullscreen(getActivity(),
                                 JZVideoPlayerStandard.class,
                                 s, videoBean.getTitle());
-
-
                     }
                 });
     }
@@ -215,6 +211,4 @@ public class LengMiFragment extends BaseFragment implements OnRefreshLoadmoreLis
     public boolean onItemLongClick(ViewGroup viewGroup, View view, VideoBean videoBean, int i) {
         return false;
     }
-
-
 }

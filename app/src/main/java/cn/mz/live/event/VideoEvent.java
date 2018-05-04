@@ -14,6 +14,8 @@ public class VideoEvent {
 
     private boolean isRefresh;
 
+    private String mAction;
+
     public boolean isRefresh() {
         return isRefresh;
     }
@@ -33,4 +35,16 @@ public class VideoEvent {
     public void setDatas(List<VideoBean> datas) {
         this.datas = datas;
     }
+
+    public void setAction(String mAction)
+    {
+        this.mAction = mAction;
+    }
+
+    public String getAction()
+    {
+        return mAction;
+    }
+
+
 }
