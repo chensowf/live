@@ -58,16 +58,16 @@ public abstract class BaseFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        if (isUserEventBus())
-        EventBus.getDefault().register(this);
+  //      if (isUserEventBus())
+//            EventBus.getDefault().register(this);
     }
 
     @Override
     public void onStop() {
         super.onStop();
 
-        if (isUserEventBus())
-        EventBus.getDefault().unregister(this);
+   //     if (isUserEventBus())
+     //       EventBus.getDefault().unregister(this);
     }
 
     @Override

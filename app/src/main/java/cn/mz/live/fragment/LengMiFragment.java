@@ -14,6 +14,7 @@ import cn.jzvd.JZVideoPlayer;
 import cn.jzvd.JZVideoPlayerStandard;
 import cn.mz.live.R;
 import cn.mz.live.adapter.LengMiVideoAdapter;
+import cn.mz.live.api.ImageApi;
 import cn.mz.live.api.VideoApi;
 import cn.mz.live.base.BaseFragment;
 import cn.mz.live.bean.VideoBean;
@@ -132,15 +133,14 @@ public class LengMiFragment extends BaseFragment implements OnRefreshLoadmoreLis
 
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onCallBackDataEvent(VideoEvent event) {
-        List<VideoBean> datas = event.getDatas();
-        if (event.isRefresh() && (datas == null || datas.size() == 0)) {
+        List<VideoBean> dates = event.getDatas();
+        if (event.isRefresh() && (dates == null || dates.size() == 0)) {
             Ts.longToast(getContext(), "数据加载为空");
         } else {
-            Ts.longToast(getContext(), "收到信息数据:" + datas.size());
+            Ts.longToast(getContext(), "收到信息数据:" + dates.size());
         }
-        adapter.addDatas(datas);
+        adapter.addDatas(dates);
         adapter.notifyDataSetChanged();
         if (refreshLayout.isLoading()) {
             refreshLayout.finishLoadmore();
@@ -157,10 +157,16 @@ public class LengMiFragment extends BaseFragment implements OnRefreshLoadmoreLis
             public void run() {
 
                 List<VideoBean> videoList = VideoApi.getVideoList(mPage, mVideoType);
-                VideoEvent event = new VideoEvent(videoList);
+                ImageApi.test();
+                final VideoEvent event = new VideoEvent(videoList);
                 event.setRefresh(isRefresh);
 
-                EventBus.getDefault().post(event);
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        onCallBackDataEvent(event);
+                    }
+                });
             }
         });
     }

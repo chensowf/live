@@ -12,19 +12,13 @@ import java.util.ArrayList;
 
 public class VideoHomeFragment extends NewsBaseTabFragment {
 
-
     private ArrayList<BaseFragment> fragments=new ArrayList<>();
 
-
     public static VideoHomeFragment  newInstance(String title){
-
         VideoHomeFragment fragment=new VideoHomeFragment();
-
         Bundle args = new Bundle();
         args.putString(ARG_TITLE, title);
-
         fragment.setArguments(args);
-
         return  fragment;
     }
 

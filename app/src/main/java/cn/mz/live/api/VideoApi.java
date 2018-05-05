@@ -2,8 +2,8 @@ package cn.mz.live.api;
 
 import android.util.Log;
 
-import com.lzy.okgo.OkGo;
 
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -16,7 +16,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import cn.mz.live.bean.VideoBean;
-
 /**
  * Created by molu_ on 2018/4/22.
  */
@@ -63,10 +62,7 @@ public class VideoApi {
     }
 
     public static String getVideoUrl(String url) {
-
-
         System.out.println("url = [" + url + "]");
-
         try {
             Document document = Jsoup.connect(url).get();
             Elements script = document.select("script");

@@ -53,7 +53,7 @@ public class MainFragment extends BaseFragment implements OnRefreshLoadmoreListe
 
     @Override
     protected boolean isUserEventBus() {
-        return false;
+        return true;
     }
 
     @Override

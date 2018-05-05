@@ -64,7 +64,7 @@ public class LiveHomeFragment extends BaseFragment {
 
     @Override
     protected boolean isUserEventBus() {
-        return false;
+        return true;
     }
 
     @Override
@@ -157,7 +157,6 @@ public class LiveHomeFragment extends BaseFragment {
 
             }
         });
-
 
     }
 
