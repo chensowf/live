@@ -43,6 +43,7 @@ import cn.mz.live.bean.DataBean;
 import cn.mz.live.bean.LiverDataBean;
 import cn.mz.live.utils.MD5;
 import cn.mz.live.utils.NetWorkUtils;
+import cn.mz.live.utils.RC4;
 import cn.mz.live.utils.SP;
 
 /**
@@ -131,8 +132,8 @@ public class LiverListActivity extends BaseActivity {
                         bundle.putString("purl", dataBean.getHref());
                         bundle.putBoolean("isLive", true);
 
-                        ShareToQQ();
-                        //toNextActivity(ProPlayerActivity.class, bundle, false);
+                    //    ShareToQQ();
+                        toNextActivity(ProPlayerActivity.class, bundle, false);
                     }
                 });
             }
@@ -142,37 +143,25 @@ public class LiverListActivity extends BaseActivity {
     }
 
     private void getData(String liveName){
-        long time =  System.currentTimeMillis()/1000 ;
-        String md5 = MD5.getMd5("KDSFNHVJvDVocmx#cvv" + String.valueOf(time));
         if (NetWorkUtils.isAvailable(APP.get())) {
-            OkGo.<String>get("http://image.200917.top/api.php?user=lv&platform=" + liveName + "&timestamp=" + time + "&token=" + md5)
+            OkGo.<String>get(liveName)
                     .execute(new StringCallback() {
                         @Override
                         public void onSuccess(Response<String> response) {
                             String s = response.body();
-                            try {
-                                Gson gson = new Gson();
-                                LiverDataBean bean = gson.fromJson(s, LiverDataBean.class);
-                                if (bean.data != null && !bean.data.isEmpty()) {
-                                    for (int i = 0; i < bean.data.size(); i++) {
-                                        String title = bean.data.get(i).liverName;
-                                        String image = bean.data.get(i).image;
-                                        String tag = bean.data.get(i).watchCount + "";
-                                        String href = bean.data.get(i).rtmp;
-                                        data.add(new DataBean(title, image, href, tag));
-                                    }
-                                    adapter.notifyDataSetChanged();
-                                    errorView.setVisibility(View.GONE);
-                                    recyclerView.setVisibility(View.VISIBLE);
-                                } else {
-                                    recyclerView.setVisibility(View.INVISIBLE);
-                                    errorView.setVisibility(View.VISIBLE);
-                                }
-                            } catch (Exception e) {
-                                recyclerView.setVisibility(View.INVISIBLE);
-                                errorView.setVisibility(View.VISIBLE);
-                                showToast("获取数据失败");
+                            String ss =  RC4.decrypt(s,"mengzi2018");
+                            String [] livers = ss.split("\n");
+                            for(String liver:livers)
+                            {
+                                String[] temps = liver.split("\\|");
+                                String title = temps[0].substring(3,temps[0].length());
+                                String image = temps[1].substring(3,temps[1].length());
+                                String href = temps[2].substring(3,temps[2].length());
+                                data.add(new DataBean(title,image,href,200+""));
                             }
+                            adapter.notifyDataSetChanged();
+                            errorView.setVisibility(View.GONE);
+                            recyclerView.setVisibility(View.VISIBLE);
                         }
 
                         @Override

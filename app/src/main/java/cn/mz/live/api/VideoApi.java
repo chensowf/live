@@ -149,10 +149,8 @@ public class VideoApi {
             String imageurl = img.attr("src");
 
             VideoBean imageItem = new VideoBean(title, nextPage, "http://www.lengmi.cc/" + getSubUtilSimple(imageurl, rgex));
-            //imageItem.setVideoUrl(getVideoUrl(nextPage));
             datas.add(imageItem);
         }
-        Log.e("lentmi","1233453434");
         return datas;
     }
 
@@ -202,6 +200,4 @@ public class VideoApi {
         }
         return "";
     }
-
-
 }

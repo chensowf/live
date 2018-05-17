@@ -10,9 +10,9 @@ public class LiveDataBean {
 
     public List<Bean> data;
 
-    public class Bean {
+    public static class Bean {
         public String platform, image, name;
-        public int anchor;
+        public String anchor;
 
     }
 
